@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { api } from '../api.js';
+import CopyButton from '../components/CopyButton.jsx';
 
 export default function ResultPage() {
   const [params] = useSearchParams();
   const orderId = params.get('order') || '';
+  const driver = params.get('driver') || '';
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
@@ -16,6 +18,22 @@ export default function ResultPage() {
       .then(setResult)
       .catch((err) => setError(err.message));
   }, [orderId]);
+
+  const fullReport = result
+    ? JSON.stringify(
+        {
+          driver,
+          orderId,
+          success: result.success,
+          message: result.message,
+          detail: result.detail ?? null,
+          payload: result.payload ?? null,
+          raw: result.raw ?? null,
+        },
+        null,
+        2,
+      )
+    : null;
 
   return (
     <div className="page">
@@ -35,7 +53,14 @@ export default function ResultPage() {
 
         {result && (
           <div className={`banner ${result.success ? 'banner-success' : 'banner-error'}`}>
-            <strong>{result.message}</strong>
+            <strong>{result.success ? 'Onaylandı' : 'Alınamadı'}</strong>
+            <p style={{ margin: '4px 0 0' }}>{result.message}</p>
+          </div>
+        )}
+
+        {fullReport && (
+          <div className="toolbar">
+            <CopyButton text={fullReport} label="Tümünü JSON olarak kopyala" className="toolbar-copy" />
           </div>
         )}
 
@@ -43,6 +68,7 @@ export default function ResultPage() {
           <section className="card">
             <div className="card-head">
               <h2>Ayrıntı</h2>
+              <CopyButton text={JSON.stringify(result.detail, null, 2)} />
             </div>
             <pre>{JSON.stringify(result.detail, null, 2)}</pre>
           </section>
@@ -52,6 +78,7 @@ export default function ResultPage() {
           <section className="card">
             <div className="card-head">
               <h2>Ham yanıt (raw)</h2>
+              <CopyButton text={JSON.stringify(result.raw, null, 2)} />
             </div>
             <pre>{JSON.stringify(result.raw, null, 2)}</pre>
           </section>
@@ -61,12 +88,22 @@ export default function ResultPage() {
           <section className="card">
             <div className="card-head">
               <h2>Bankadan gelen POST (payload)</h2>
+              <CopyButton text={JSON.stringify(result.payload, null, 2)} />
             </div>
             <pre>{JSON.stringify(result.payload, null, 2)}</pre>
           </section>
         )}
 
-        <Link to="/" className="primary-button link-button">
+        <Link
+          to={{
+            pathname: '/',
+            search: new URLSearchParams({
+              ...(driver ? { driver } : {}),
+              ...(result?.detail?.order_id ? { order: result.detail.order_id } : {}),
+            }).toString(),
+          }}
+          className="primary-button link-button"
+        >
           ← Yeni ödeme dene
         </Link>
       </main>

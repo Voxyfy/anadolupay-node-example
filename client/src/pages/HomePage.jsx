@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { api } from '../api.js';
 
 function randomOrderId() {
@@ -6,12 +7,16 @@ function randomOrderId() {
 }
 
 export default function HomePage() {
+  const [searchParams] = useSearchParams();
   const [drivers, setDrivers] = useState([]);
   const [cards, setCards] = useState([]);
   const [loadError, setLoadError] = useState(null);
 
   const [orderId] = useState(randomOrderId);
-  const [driver, setDriver] = useState('fake');
+  // Sonuç sayfasından dönüldüğünde sürücüyü hatırla — bileşen her açılışta
+  // varsayılana dönseydi durum sorgusu farkında olmadan başka bir
+  // sağlayıcıya gidip "bulunamadı" derdi.
+  const [driver, setDriver] = useState(() => searchParams.get('driver') || 'fake');
   const [amount, setAmount] = useState('100.00');
   const [installment, setInstallment] = useState(1);
   const [paymentModel, setPaymentModel] = useState('3d');
@@ -25,7 +30,7 @@ export default function HomePage() {
   const [submitting, setSubmitting] = useState(false);
   const [payError, setPayError] = useState(null);
 
-  const [statusOrderId, setStatusOrderId] = useState('');
+  const [statusOrderId, setStatusOrderId] = useState(() => searchParams.get('order') || '');
   const [statusResult, setStatusResult] = useState(null);
   const [statusLoading, setStatusLoading] = useState(false);
 

@@ -378,6 +378,46 @@ label > select {
   color: var(--fg);
 }
 
+.toolbar {
+  margin-bottom: 24px;
+}
+
+.copy-button {
+  font: 500 12px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 10px;
+  white-space: nowrap;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.copy-button:hover {
+  color: var(--fg);
+}
+
+.copy-button.done {
+  color: var(--success-fg);
+  border-color: var(--success-border);
+  background: var(--success-bg);
+}
+
+.toolbar-copy {
+  padding: 14px 22px;
+  font-size: 14px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--accent-fg);
+  border-color: transparent;
+}
+
+.toolbar-copy.done {
+  background: var(--success-fg);
+  color: var(--bg);
+}
+
 .result-block,
 .op-result {
   margin-top: 16px;
