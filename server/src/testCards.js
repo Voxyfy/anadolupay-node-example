@@ -42,4 +42,12 @@ export const TEST_CARDS = [
   { key: 'paycell-denizbank', driver: 'paycell', label: 'Paycell — DenizBank (3D şifre: 123456)', number: '5200190006338608', month: '01', year: '2030', cvv: '410' },
   { key: 'albaraka-visa', driver: 'albaraka', label: 'Albaraka — Visa (3D onay kodu: 34020)', number: '4506347010299085', month: '09', year: '2026', cvv: '000' },
   { key: 'ziraat-3dpay', driver: 'ziraat-payflex', label: 'Ziraat 3D Pay — Mastercard', number: '5549601963997012', month: '09', year: '2029', cvv: '259' },
+  // Tami — dev.tami.com.tr/test-kartlari (hangi senaryoyu simüle ettiği belirtilmemiş).
+  { key: 'tami-garanti-bonus', driver: 'tami', label: 'Tami — Garanti Bonus (Mastercard)', number: '5406697543211173', month: '04', year: '2027', cvv: '423' },
+  { key: 'tami-ziraat', driver: 'tami', label: 'Tami — Ziraat Bankası', number: '5423740051890870', month: '05', year: '2027', cvv: '015' },
+  { key: 'tami-vakifbank', driver: 'tami', label: 'Tami — VakıfBank', number: '4938410180801789', month: '12', year: '2029', cvv: '767' },
+  { key: 'tami-qnb', driver: 'tami', label: 'Tami — QNB Finansbank', number: '4155650100416111', month: '01', year: '2050', cvv: '715' },
+  { key: 'tami-isbank', driver: 'tami', label: 'Tami — İş Bankası', number: '4543600372218357', month: '09', year: '2027', cvv: '448' },
+  { key: 'tami-akbank', driver: 'tami', label: 'Tami — Akbank', number: '5127543000946141', month: '01', year: '2035', cvv: '517' },
+  { key: 'tami-teb', driver: 'tami', label: 'Tami — TEB', number: '4355084355084358', month: '12', year: '2028', cvv: '000' },
 ];

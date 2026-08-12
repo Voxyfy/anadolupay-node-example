@@ -110,6 +110,9 @@ doğrulanmış numaralar konur.
 | paycell | DenizBank | `5200190006338608` | 01/2030 | 410 | 3D şifre: `123456` |
 | albaraka | Visa | `4506347010299085` | 09/2026 | 000 | 3D onay kodu: `34020` |
 | ziraat-payflex | Mastercard (3D Pay) | `5549601963997012` | 09/2029 | 259 | |
+| tami | Garanti Bonus (Mastercard) | `5406697543211173` | 04/2027 | 423 | Sürücü henüz sandbox'a karşı doğrulanmadı |
+| tami | QNB Finansbank | `4155650100416111` | 01/2050 | 715 | |
+| tami | İş Bankası | `4543600372218357` | 09/2027 | 448 | |
 
 Kaynaklar ve kimliği/kartı henüz bekleyen sürücülerin listesi için
 [`TEST-KARTLARI.md`](./TEST-KARTLARI.md)'ye bakın.

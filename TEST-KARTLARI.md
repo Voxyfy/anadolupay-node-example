@@ -46,6 +46,13 @@ son kullanma tarihi, CVV) otomatik doldurulur.
 | paycell | DenizBank | `5200190006338608` | 01/2030 | 410 | 3D şifre: `123456` |
 | albaraka | Visa | `4506347010299085` | 09/2026 | 000 | 3D onay kodu: `34020`. Banka test kartı yayınlamıyor; mewebstudio/pos örneğindeki kart |
 | ziraat-payflex | Mastercard (3D Pay) | `5549601963997012` | 09/2029 | 259 | Ziraat/Innova 3D Pay test formunun varsayılanı |
+| tami | Garanti Bonus (Mastercard) | `5406697543211173` | 04/2027 | 423 | Hangi senaryoyu simüle ettiği belirtilmemiş |
+| tami | Ziraat Bankası | `5423740051890870` | 05/2027 | 015 | |
+| tami | VakıfBank | `4938410180801789` | 12/2029 | 767 | |
+| tami | QNB Finansbank | `4155650100416111` | 01/2050 | 715 | |
+| tami | İş Bankası | `4543600372218357` | 09/2027 | 448 | |
+| tami | Akbank | `5127543000946141` | 01/2035 | 517 | |
+| tami | TEB | `4355084355084358` | 12/2028 | 000 | |
 
 ## Kaynaklar
 
@@ -65,9 +72,19 @@ son kullanma tarihi, CVV) otomatik doldurulur.
 - Paycell — paycellapi.apidog.io/test-kredi-kartlari
 - Albaraka Türk — mewebstudio/pos örnek deposu
 - Ziraat 3D Pay — Innova test formu
+- Tami — dev.tami.com.tr/test-kartlari
 
 ## Kaynağı olmayan/kimliği bekleyen sürücüler
 
 `denizbank`, `halkbank`, `teb`, `sekerbank`, `ing`, `alternatifbank`,
-`ziraat-katilim`, `vakif-katilim` için henüz doğrulanmış bir test kartı
-yok — bu sürücülerin `.env` alanları da boş (kimlik bilgisi bekleniyor).
+`ziraat-katilim`, `vakif-katilim`, `paratika`, `craftgate`, `paytr` için
+henüz doğrulanmış bir test kartı yok — bu sürücülerin `.env` alanları da
+boş (kimlik bilgisi bekleniyor).
+
+> ⚠️ **`tami` ayrı bir kategoride:** kart listesi var ama sürücünün kendisi
+> (`TamiGateway`) henüz gerçek bir sandbox'a karşı hiç çalıştırılmadı —
+> `securityHash` imza formülü dokümantasyonun kendi içinde çelişkili (bkz.
+> ana `README.md`'deki [Durum](../anadolupay-node/README.md#durum) notu).
+> İlk denemede `4003` benzeri bir hash hatası alırsanız bu bilinen risk
+> gerçekleşmiş olabilir. Ayrıca bu sürücü `@voxyfy/anadolupay@1.3.0` ile
+> geldi; kullanmadan önce `npm update @voxyfy/anadolupay` çalıştırın.

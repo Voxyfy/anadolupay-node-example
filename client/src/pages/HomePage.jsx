@@ -101,7 +101,13 @@ export default function HomePage() {
       }
 
       if (!response.requiresForm) {
-        setPayError('Banka 3D içeriği döndürmedi (ne form alanı ne HTML var).');
+        // Sağlayıcı ödemeyi (istisna fırlatmadan) reddetti — asıl sebep
+        // varsa onu göster, "ne form ne HTML var" genel mesajına düşme.
+        setPayError(
+          response.errorMessage
+            ? `${response.errorMessage}${response.errorCode ? ` (${response.errorCode})` : ''}`
+            : 'Banka 3D içeriği döndürmedi (ne form alanı ne HTML var).',
+        );
         setSubmitting(false);
         return;
       }
@@ -191,8 +197,12 @@ export default function HomePage() {
           <div className="banner banner-warning">
             <strong>{currentDriver.label}</strong> için kimlik bilgisi girilmemiş.
             <p>
-              Eksik alanlar: {currentDriver.missing.map((m) => (
-                <code key={m}>{m}</code>
+              Eksik alanlar:{' '}
+              {currentDriver.missing.map((m, index) => (
+                <span key={m}>
+                  <code>{m}</code>
+                  {index < currentDriver.missing.length - 1 ? ', ' : ''}
+                </span>
               ))}
             </p>
             <p>Değerleri kök dizindeki <code>.env</code> dosyasına ekleyip sunucuyu yeniden başlatın.</p>

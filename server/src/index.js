@@ -165,6 +165,11 @@ app.post('/api/pay', async (req, res) => {
       formMethod: response.formMethod,
       redirectUrl: response.redirectUrl ?? null,
       htmlContent: response.htmlContent ?? null,
+      // Sağlayıcı ödemeyi (istisna fırlatmadan) reddettiyse asıl sebep
+      // burada — client bunu göstermezse kullanıcı anlamsız bir "banka
+      // 3D içeriği döndürmedi" mesajıyla baş başa kalır.
+      errorMessage: response.errorMessage ?? null,
+      errorCode: response.errorCode ?? null,
     });
   } catch (error) {
     res.status(422).json({ error: errorPayload(error) });

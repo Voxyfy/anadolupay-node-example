@@ -15,6 +15,7 @@ import {
   PayTrGateway,
   PosNetGateway,
   PosNetV1Gateway,
+  TamiGateway,
   ToslaGateway,
   VakifKatilimGateway,
 } from '@voxyfy/anadolupay';
@@ -310,6 +311,29 @@ export const DRIVER_DEFS = [
           gateway_3d: env.PAYTR_GATEWAY_3D || 'https://www.paytr.com/odeme',
           gateway_3d_host: env.PAYTR_GATEWAY_3D_HOST || 'https://www.paytr.com/odeme/guvenli',
         },
+      }),
+  },
+
+  {
+    key: 'tami',
+    label: 'Tami',
+    requiredEnv: ['TAMI_MERCHANT_NUMBER', 'TAMI_TERMINAL_NUMBER', 'TAMI_SECRET_KEY', 'TAMI_JWK_KID', 'TAMI_JWK_K'],
+    build: (env) =>
+      new TamiGateway({
+        merchantId: env.TAMI_MERCHANT_NUMBER || '',
+        terminalId: env.TAMI_TERMINAL_NUMBER || '',
+        secretKey: env.TAMI_SECRET_KEY || '',
+        // Tami terminolojisi: username/password burada JWK kid/k çiftidir
+        // — PG-Auth-Token'daki secretKey'den ayrı bir anahtar.
+        username: env.TAMI_JWK_KID || '',
+        password: env.TAMI_JWK_K || '',
+        extra: { payment_group: env.TAMI_PAYMENT_GROUP || 'PRODUCT' },
+        // securityHash/hashedData formülü Tami tarafından resmen
+        // doğrulanmadı; riski bilerek test ederken TAMI_VERIFY_HASH=true
+        // yapabilirsiniz.
+        verifyHash: env.TAMI_VERIFY_HASH === 'true',
+        testMode: env.TAMI_TEST_MODE === 'true',
+        endpoints: { payment_api: env.TAMI_PAYMENT_API || 'https://paymentapi.tami.com.tr' },
       }),
   },
 

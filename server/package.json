@@ -11,7 +11,7 @@
     "start": "node src/index.js"
   },
   "dependencies": {
-    "@voxyfy/anadolupay": "^1.2.0",
+    "@voxyfy/anadolupay": "^1.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2"
