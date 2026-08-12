@@ -18,6 +18,8 @@ export const TEST_CARDS = [
   { key: 'moka-akbank', driver: 'moka', label: 'Moka — Akbank (Master)', number: '5127541122223332', month: '12', year: '2030', cvv: '000' },
   { key: 'moka-ziraat', driver: 'moka', label: 'Moka — Ziraat (Master)', number: '5136621122223331', month: '12', year: '2030', cvv: '000' },
   { key: 'nestpay-ziraat-visa', driver: 'ziraat', label: 'Ziraat / NestPay — Visa (3D şifre: a)', number: '4546711234567894', month: '12', year: '2026', cvv: '000' },
+  { key: 'nestpay-isbank-visa', driver: 'isbank', label: 'İş Bankası / NestPay — Visa (3D şifre: a, tam tur doğrulandı)', number: '4546711234567894', month: '12', year: '2026', cvv: '000' },
+  { key: 'nestpay-isbank-master', driver: 'isbank', label: 'İş Bankası / NestPay — Mastercard (3D şifre: a, tam tur doğrulandı)', number: '5571135571135575', month: '12', year: '2026', cvv: '000' },
   { key: 'nestpay-ziraat-master', driver: 'ziraat', label: 'Ziraat / NestPay — Mastercard (3D şifre: a)', number: '5401341234567891', month: '12', year: '2026', cvv: '000' },
   { key: 'nestpay-akbank-master', driver: 'akbank', label: 'Akbank NestPay — Mastercard (3D şifre: a)', number: '5571135571135575', month: '12', year: '2026', cvv: '000' },
   { key: 'nestpay-akbank-visa', driver: 'akbank', label: 'Akbank NestPay — Visa (3D şifre: a)', number: '4355084355084358', month: '12', year: '2026', cvv: '000' },

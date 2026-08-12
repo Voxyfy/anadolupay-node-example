@@ -89,6 +89,8 @@ doğrulanmış numaralar konur.
 | ziraat (NestPay) | Mastercard | `5401341234567891` | 12/2026 | 000 | 3D şifre: `a` |
 | akbank (NestPay) | Mastercard | `5571135571135575` | 12/2026 | 000 | 3D şifre: `a` |
 | akbank (NestPay) | Visa | `4355084355084358` | 12/2026 | 000 | 3D şifre: `a` |
+| isbank (NestPay) | Visa | `4546711234567894` | 12/2026 | 000 | 3D şifre: `a`, tam tur doğrulandı |
+| isbank (NestPay) | Mastercard | `5571135571135575` | 12/2026 | 000 | 3D şifre: `a`, tam tur doğrulandı |
 | turkiyefinans (NestPay) | Mastercard | `5377195377190410` | 12/2026 | 000 | 3D şifre: `a` |
 | turkiyefinans (NestPay) | Visa | `4799174799173828` | 12/2026 | 000 | 3D şifre: `a` |
 | tosla | Ziraat Bankkart (Visa) | `4546711234567894` | 12/2026 | 000 | |

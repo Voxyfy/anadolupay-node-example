@@ -25,6 +25,8 @@ son kullanma tarihi, CVV) otomatik doldurulur.
 | ziraat (NestPay) | Ziraat — Mastercard | `5401341234567891` | 12/2026 | 000 | 3D şifre: `a` |
 | akbank (NestPay) | Akbank — Mastercard | `5571135571135575` | 12/2026 | 000 | 3D şifre: `a` |
 | akbank (NestPay) | Akbank — Visa | `4355084355084358` | 12/2026 | 000 | 3D şifre: `a`. Akbank'ın `100100000` mağazasında `Kartin son kullanma tarihi hatali` verebilir — reddedilirse listedeki bir diğerini deneyin |
+| isbank (NestPay) | İş Bankası — Visa | `4546711234567894` | 12/2026 | 000 | 3D şifre: `a`. **Tam tur doğrulandı**: `mdStatus 1` geçiyor, provizyon paylaşılan kimliğin yapısal sınırı yüzünden `ProcReturnCode 99 / ISO8583-19` ile düşüyor (kartla ilgisi yok) |
+| isbank (NestPay) | İş Bankası — Mastercard | `5571135571135575` | 12/2026 | 000 | 3D şifre: `a`. Aynı sonuç: 3D geçiyor, provizyon aynı yapısal sınırla düşüyor |
 | turkiyefinans (NestPay) | Türkiye Finans — Mastercard | `5377195377190410` | 12/2026 | 000 | 3D şifre: `a` |
 | turkiyefinans (NestPay) | Türkiye Finans — Visa | `4799174799173828` | 12/2026 | 000 | 3D şifre: `a` |
 | tosla | Ziraat Bankkart (Visa) | `4546711234567894` | 12/2026 | 000 | |
