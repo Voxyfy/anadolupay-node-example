@@ -1,4 +1,3 @@
-import { randomUUID } from 'node:crypto';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import cors from 'cors';
@@ -9,6 +8,7 @@ import {
   CardData,
   CreatePaymentData,
   InvalidSignatureError,
+  makeOrderNumber,
   Money,
   PaymentFailedError,
   RefundPaymentData,
@@ -107,7 +107,9 @@ app.post('/api/pay', async (req, res) => {
     return res.status(400).json({ error: { title: 'Geçersiz sürücü', message: `'${body.driver}' tanımlı değil.` } });
   }
 
-  const orderId = body.orderId || `TEST-${randomUUID().slice(0, 8).toUpperCase()}`;
+  // Numara DTO'dan önce üretiliyor: aynı değer geri dönüş URL'ine ve
+  // müşteri kaydına da yazılıyor. Ön ek .env'deki ANADOLUPAY_ORDER_PREFIX.
+  const orderId = body.orderId || makeOrderNumber();
 
   const data = new CreatePaymentData({
     amount: Money.fromDecimal(String(body.amount ?? '100.00')),
