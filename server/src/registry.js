@@ -92,7 +92,12 @@ export const DRIVER_DEFS = [
         password: env.GARANTI_PASSWORD || '',
         secretKey: env.GARANTI_SECRET_KEY || '',
         refundPassword: env.GARANTI_REFUND_PASSWORD,
-        extra: { refund_username: env.GARANTI_REFUND_USERNAME },
+        extra: {
+          refund_username: env.GARANTI_REFUND_USERNAME,
+          // Yalnızca bayi (alt üye işyeri) yapılandırmalı terminaller için.
+          sub_merchant_id: env.GARANTI_SUB_MERCHANT_ID,
+          sub_merchant_id_path: env.GARANTI_SUB_MERCHANT_ID_PATH,
+        },
         testMode: env.GARANTI_TEST_MODE === 'true',
         endpoints: {
           payment_api: env.GARANTI_PAYMENT_API || 'https://sanalposprov.garanti.com.tr/VPServlet',
